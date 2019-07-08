@@ -4,6 +4,7 @@ import { Container } from 'native-base';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
+import TextLabel from '../Components/TextLabel';
 
 export default class Login extends Component {
     render(){
