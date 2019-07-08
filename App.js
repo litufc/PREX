@@ -1,6 +1,7 @@
 import React from 'react';
-import { Font } from 'expo';
+import { Font, Constants } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, View } from 'react-native';
 
 import Login from './src/Pages/Login';
 
@@ -20,11 +21,17 @@ export default class App extends React.Component{
 
     render(){
         return(
-            <>
+            <View style={styles.container}>
                 {this.state.fontLoaded ? (
-                    <Login />
+                    <Login/>
                 ) : null }
-            </>
+            </View>
         )
     }
 };
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: Constants.statusBarHeight
+    }
+})
