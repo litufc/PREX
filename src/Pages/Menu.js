@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
-import ButtonInput from '../Components/Inputs/ButtonInput';
+import CardLarge from '../Components/Cards/CardLarge';
 
 export default class Login extends Component {
     render(){
@@ -15,9 +15,10 @@ export default class Login extends Component {
                     textColor="#FFFFFF" 
                     background={AppStyles.colour.primaryColor}
                 />
-                <View style={styles.container}>
-                    
-                </View>
+                <ScrollView style={styles.container}>
+                    <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
+                    <CardLarge icon="tasks">Questionários</CardLarge>
+                </ScrollView>
             </View>
         );
     }
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         marginTop: 80,
+        paddingHorizontal: 16,
         backgroundColor: AppStyles.colour.primaryColor
     }
 })
