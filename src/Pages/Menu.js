@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
-import TextInput from '../Components/Inputs/TextInput';
+import ButtonConfirm from '../Components/Inputs/ButtonConfirm';
 
 export default class Login extends Component {
     render(){
@@ -15,6 +15,7 @@ export default class Login extends Component {
                     background={AppStyles.colour.primaryColor}
                 />
                 <View style={styles.container}>
+                    <ButtonConfirm>Confirmar</ButtonConfirm>
                 </View>
             </View>
         );
