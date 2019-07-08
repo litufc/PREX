@@ -8,7 +8,7 @@ export default class Login extends Component {
     render(){
         return(
             <Container>
-                <Toolbar title="Início"/>
+                {/* <Toolbar title="Início" textColor="#006CB4"/> */}
             </Container>
         );
     }

@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 
 import Login from './src/Pages/Login';
+import Menu from './src/Pages/Menu';
 
 export default class App extends React.Component{
     state = {
@@ -23,7 +24,7 @@ export default class App extends React.Component{
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded ? (
-                    <Login/>
+                    <Menu/>
                 ) : null }
             </View>
         )
