@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Container } from 'native-base';
+import { StyleSheet, View } from 'react-native';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
-import TextLabel from '../Components/TextLabel';
+import TextInput from '../Components/Inputs/TextInput';
 
 export default class Login extends Component {
     render(){
