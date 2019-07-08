@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
-import ButtonConfirm from '../Components/Inputs/ButtonConfirm';
+import ButtonInput from '../Components/Inputs/ButtonInput';
 
 export default class Login extends Component {
     render(){
@@ -15,7 +16,7 @@ export default class Login extends Component {
                     background={AppStyles.colour.primaryColor}
                 />
                 <View style={styles.container}>
-                    <ButtonConfirm>Confirmar</ButtonConfirm>
+                    
                 </View>
             </View>
         );

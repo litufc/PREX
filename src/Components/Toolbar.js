@@ -16,7 +16,7 @@ const Toolbar = ( { title, textColor, background, iconColor } ) => {
         },
         containerTitle: {
             alignItems: "center",
-            marginLeft: -20
+            marginLeft: -36
         },
         leftContainer: {
             flex: 0,
@@ -29,16 +29,16 @@ const Toolbar = ( { title, textColor, background, iconColor } ) => {
     });
     return(
         <Container>
-        <Header style={styles.header}>
-            <Left style={styles.leftContainer}>
-                {iconColor &&
-                    <Icon type="FontAwesome" name="arrow-left" size={23} style={styles.iconBack}/>
-                }
-            </Left>
-            <Body style={styles.containerTitle}>
-                <Title style={styles.titleHeader}>{title}</Title>
-            </Body>
-        </Header>
+            <Header style={styles.header}>
+                <Left style={styles.leftContainer}>
+                    {iconColor &&
+                        <Icon type="FontAwesome" name="arrow-left" size={23} style={styles.iconBack}/>
+                    }
+                </Left>
+                <Body style={styles.containerTitle}>
+                    <Title style={styles.titleHeader}>{title}</Title>
+                </Body>
+            </Header>
         </Container>
     )
 }
