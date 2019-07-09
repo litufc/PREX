@@ -27,6 +27,7 @@ export default class Menu extends Component {
                             <CardSmall icon="cog">Opções</CardSmall>
                         </Col>
                     </Grid>
+                    
                 </ScrollView>
             </View>
         );
