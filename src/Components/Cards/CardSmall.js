@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Card, CardItem, Text, Icon, Grid, Col } from 'native-base';
+import { Card, CardItem, Text, Icon, Grid, Row } from 'native-base';
 import AppStyles from '../../global';
 
-const CardLarge = ( { icon, children } ) => {
+const CardSmall = ( { icon, children } ) => {
     const styles = StyleSheet.create({
         card: {
             backgroundColor: AppStyles.colour.secundaryColor,
@@ -20,30 +20,34 @@ const CardLarge = ( { icon, children } ) => {
         icon: {
             fontSize: 64,
             color: 'rgba(0, 0, 0, 0.3)',
-            width: 133,
-            paddingLeft: 20
+            width: 'auto'
         },
         labelCard: {
             fontFamily: 'Roboto_medium',
             fontSize: 25,
             color: '#FFFFFF',
-            textAlign: 'center'
+            textAlign: 'center',
+        },
+        grid: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
         }
     });
     return(
         <Card style={styles.card}>
             <CardItem style={styles.cardItem}>
-                <Grid>
-                    <Col style={{ width: 80 }}>
+                <Grid style={styles.grid}>
+                    <Row style={{ height: 'auto' }}>
                         <Icon type="FontAwesome" name={icon} style={styles.icon}/>
-                    </Col>
-                    <Col style={{ justifyContent: 'center' }}>
+                    </Row>
+                    <Row>
                         <Text style={styles.labelCard}>{children}</Text>
-                    </Col>
+                    </Row>
                 </Grid>
             </CardItem>
         </Card>
     )
 }
 
-export default CardLarge;
+export default CardSmall;
