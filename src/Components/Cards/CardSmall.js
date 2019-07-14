@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Card, CardItem, Text, Icon, Grid, Row } from 'native-base';
+import { Card, CardItem, Icon, Grid, Row } from 'native-base';
+
 import AppStyles from '../../global';
+import TextLabel from '../TextLabel';
 
 const CardSmall = ( { icon, children } ) => {
     const styles = StyleSheet.create({
@@ -22,12 +24,6 @@ const CardSmall = ( { icon, children } ) => {
             color: 'rgba(0, 0, 0, 0.3)',
             width: 'auto'
         },
-        labelCard: {
-            fontFamily: 'Roboto_medium',
-            fontSize: 25,
-            color: '#FFFFFF',
-            textAlign: 'center',
-        },
         grid: {
             flex: 1,
             alignItems: 'center',
@@ -42,7 +38,14 @@ const CardSmall = ( { icon, children } ) => {
                         <Icon type="FontAwesome" name={icon} style={styles.icon}/>
                     </Row>
                     <Row>
-                        <Text style={styles.labelCard}>{children}</Text>
+                        <TextLabel 
+                            textFont="Roboto_medium"
+                            textSize={25}
+                            textColor="#FFFFFF"
+                            align="center"
+                        >
+                        {children}
+                        </TextLabel>
                     </Row>
                 </Grid>
             </CardItem>

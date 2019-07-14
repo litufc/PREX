@@ -3,8 +3,7 @@ import { Font, Constants } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 
-import Login from './src/Pages/Login';
-import Menu from './src/Pages/Menu';
+import Routes from './src/routes';
 
 export default class App extends React.Component{
     state = {
@@ -24,7 +23,7 @@ export default class App extends React.Component{
         return(
             <View style={styles.container}>
                 {this.state.fontLoaded ? (
-                    <Menu/>
+                    <Routes/>
                 ) : null }
             </View>
         )

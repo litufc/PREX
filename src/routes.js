@@ -1,10 +1,12 @@
-import { createSwitchNavigator, createAppContainer } from 'react-native';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-import Login from './Pages/Login';
+import Menu from './Pages/Menu';
+import Agendamentos from './Pages/Agendamentos';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
-        Login,
+        Menu,
+        Agendamentos
     })
 );
 

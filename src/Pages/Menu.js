@@ -8,6 +8,13 @@ import CardLarge from '../Components/Cards/CardLarge';
 import CardSmall from '../Components/Cards/CardSmall';
 
 export default class Menu extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            userType: 0
+        }
+    }
+
     render(){
         return(
             <View>
@@ -17,7 +24,17 @@ export default class Menu extends Component {
                     background={AppStyles.colour.primaryColor}
                 />
                 <ScrollView style={styles.container}>
-                    <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
+                    {this.state.userType === 0 &&
+                        <CardLarge 
+                            icon="calendar" 
+                            onPress={() => this.props.navigation.navigate('Agendamentos')}
+                        >
+                            Agendamentos
+                        </CardLarge>
+                    }
+                    {this.state.userType === 1 &&
+                        <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
+                    }
                     <CardLarge icon="tasks">Questionários</CardLarge>
                     <Grid>
                         <Col style={{ marginRight: 8 }}>
@@ -41,7 +58,6 @@ const styles = StyleSheet.create({
     container: {
         height: '100%',
         width: '100%',
-        marginTop: 80,
         paddingHorizontal: 16,
         backgroundColor: AppStyles.colour.primaryColor
     }
