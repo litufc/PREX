@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Button } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 
 import AppStyles from '../global';
@@ -8,6 +8,7 @@ import CardLarge from '../Components/Cards/CardLarge';
 import CardSmall from '../Components/Cards/CardSmall';
 
 export default class Menu extends Component {
+
     render(){
         return(
             <View>
