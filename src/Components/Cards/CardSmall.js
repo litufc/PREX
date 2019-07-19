@@ -1,19 +1,26 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Card, CardItem, Text, Icon, Grid, Row } from 'native-base';
-import AppStyles from '../../global';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Card, CardItem, Icon, Grid, Row } from 'native-base';
 
-const CardSmall = ( { icon, children } ) => {
+import AppStyles from '../../global';
+import TextLabel from '../TextLabel';
+
+const CardSmall = ( { icon, children, background, onPress } ) => {
+    let backgroundColor;
+    if(background)
+        backgroundColor = background;
+    else
+        backgroundColor = AppStyles.colour.secundaryColor;
     const styles = StyleSheet.create({
         card: {
-            backgroundColor: AppStyles.colour.secundaryColor,
+            backgroundColor: backgroundColor,
             borderRadius: 10,
-            borderColor: AppStyles.colour.secundaryColor,
+            borderColor: backgroundColor,
             height: 128,
             marginBottom: 16
         },
         cardItem: {
-            backgroundColor: AppStyles.colour.secundaryColor,
+            backgroundColor: backgroundColor,
             borderRadius: 10,
             height: 128
         },
@@ -21,12 +28,6 @@ const CardSmall = ( { icon, children } ) => {
             fontSize: 64,
             color: 'rgba(0, 0, 0, 0.3)',
             width: 'auto'
-        },
-        labelCard: {
-            fontFamily: 'Roboto_medium',
-            fontSize: 25,
-            color: '#FFFFFF',
-            textAlign: 'center',
         },
         grid: {
             flex: 1,
@@ -36,16 +37,25 @@ const CardSmall = ( { icon, children } ) => {
     });
     return(
         <Card style={styles.card}>
-            <CardItem style={styles.cardItem}>
-                <Grid style={styles.grid}>
-                    <Row style={{ height: 'auto' }}>
-                        <Icon type="FontAwesome" name={icon} style={styles.icon}/>
-                    </Row>
-                    <Row>
-                        <Text style={styles.labelCard}>{children}</Text>
-                    </Row>
-                </Grid>
-            </CardItem>
+            <TouchableOpacity onPress={onPress}>
+                <CardItem style={styles.cardItem}>
+                    <Grid style={styles.grid}>
+                        <Row style={{ height: 'auto' }}>
+                            <Icon type="FontAwesome" name={icon} style={styles.icon}/>
+                        </Row>
+                        <Row>
+                            <TextLabel 
+                                textFont="Roboto_medium"
+                                textSize={25}
+                                textColor="#FFFFFF"
+                                align="center"
+                            >
+                            {children}
+                            </TextLabel>
+                        </Row>
+                    </Grid>
+                </CardItem>
+            </TouchableOpacity>
         </Card>
     )
 }
