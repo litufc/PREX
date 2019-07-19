@@ -6,13 +6,14 @@ const TextInput = ( { label, textColor, type } ) => {
     const styles = StyleSheet.create({
         item: {
             borderBottomColor: textColor,
+            borderBottomWidth: 2
         },
         label: {
             color: textColor
         },
         input: {
             fontSize: 16,
-            color: textColor
+            color: "#6D6D6D"
         }
     });
     return(

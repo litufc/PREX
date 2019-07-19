@@ -3,9 +3,9 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
-import CardLarge from '../Components/Cards/CardLarge';
+import CardStatus from '../Components/Cards/CardStatus';
 
-export default class Schedules extends Component {
+export default class SchedulesStatus extends Component {
     constructor(props){
         super(props);
     }
@@ -13,15 +13,28 @@ export default class Schedules extends Component {
         return(
             <View>
                 <Toolbar 
-                    title="Agendamentos" 
+                    title="Status de Agendamento" 
                     textColor="#FFFFFF" 
                     background={AppStyles.colour.primaryColor}
                     iconColor={AppStyles.colour.secundaryColor}
-                    onPress={() => this.props.navigation.navigate('Menu')}
+                    onPress={() => this.props.navigation.navigate('Schedules')}
                 />
                 <ScrollView style={styles.container}>
-                    <CardLarge icon="plus-circle">Adicionar Horários</CardLarge>
-                    <CardLarge icon="history" onPress={() => this.props.navigation.navigate('SchedulesStatus')}>Status de Agendamentos</CardLarge>
+                    <CardStatus
+                        author="Coordenador 1"
+                        project="Projeto 1"
+                        status={1}
+                    />
+                    <CardStatus
+                        author="Coordenador 2"
+                        project="Projeto 2"
+                        status={2}
+                    />
+                    <CardStatus
+                        author="Coordenador 3"
+                        project="Projeto 3"
+                        status={3}
+                    />
                 </ScrollView>
             </View>
         );

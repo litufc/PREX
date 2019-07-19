@@ -10,9 +10,6 @@ import CardSmall from '../Components/Cards/CardSmall';
 export default class Options extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            userType: 0
-        }
     }
     render(){
         return(
