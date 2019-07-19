@@ -7,44 +7,34 @@ import Toolbar from '../Components/Toolbar';
 import CardLarge from '../Components/Cards/CardLarge';
 import CardSmall from '../Components/Cards/CardSmall';
 
-export default class Menu extends Component {
+export default class Options extends Component {
     constructor(props){
         super(props);
         this.state = {
             userType: 0
         }
     }
-
     render(){
         return(
             <View>
                 <Toolbar 
-                    title="Menu" 
+                    title="Opções" 
                     textColor="#FFFFFF" 
                     background={AppStyles.colour.primaryColor}
+                    iconColor={AppStyles.colour.secundaryColor}
+                    onPress={() => this.props.navigation.navigate('Menu')}
                 />
                 <ScrollView style={styles.container}>
-                    {this.state.userType === 0 &&
-                        <CardLarge 
-                            icon="calendar" 
-                            onPress={() => this.props.navigation.navigate('Agendamentos')}
-                        >
-                            Agendamentos
-                        </CardLarge>
-                    }
-                    {this.state.userType === 1 &&
-                        <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
-                    }
-                    <CardLarge icon="tasks">Questionários</CardLarge>
+                    <CardLarge icon="cog">Opções da Conta</CardLarge>
+                    <CardLarge icon="universal-access">Acessibilidade</CardLarge>
                     <Grid>
                         <Col style={{ marginRight: 8 }}>
-                            <CardSmall icon="question">Ajuda</CardSmall>
+                            <CardSmall icon="info">Créditos</CardSmall>
                         </Col>
                         <Col style={{ marginLeft: 8 }}>
-                            <CardSmall icon="cog" onPress={() => this.props.navigation.navigate('Options')}>Opções</CardSmall>
+                            <CardSmall icon="sign-out" background="#EB5425">Sair</CardSmall>
                         </Col>
                     </Grid>
-                    
                 </ScrollView>
             </View>
         );
