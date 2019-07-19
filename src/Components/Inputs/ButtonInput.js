@@ -4,7 +4,7 @@ import { Button, Text, Icon } from 'native-base';
 
 import AppStyles from '../../global';
 
-const ButtonInput = ( { children, direction } ) => {
+const ButtonInput = ( { children, direction, onPress } ) => {
     const styles = StyleSheet.create({
         button: {
             height: 40,
@@ -27,20 +27,20 @@ const ButtonInput = ( { children, direction } ) => {
     return(
         <>
             {!direction &&
-                <Button rounded style={styles.button}>
+                <Button rounded style={styles.button} onPress={onPress}>
                     <Text style={styles.labelButton}>{children}</Text>
                 </Button>
             }
 
             {direction === "left" &&
-                <Button rounded iconLeft style={styles.button}>
+                <Button rounded iconLeft style={styles.button} onPress={onPress}>
                     <Icon type="FontAwesome" name="arrow-left" />
                     <Text style={styles.labelButton}>{children}</Text>
                 </Button>
             }
 
             {direction === "right" &&
-                <Button rounded iconRight style={styles.button}>
+                <Button rounded iconRight style={styles.button} onPress={onPress}>
                     <Text style={styles.labelButton}>{children}</Text>
                     <Icon type="FontAwesome" name="arrow-right" style={styles.iconRight} />
                 </Button>
