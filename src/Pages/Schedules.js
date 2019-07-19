@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import { Col, Grid } from 'react-native-easy-grid';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
 import CardLarge from '../Components/Cards/CardLarge';
-import CardStatus from '../Components/Cards/CardStatus';
 
-export default class Agendamentos extends Component {
+export default class Schedules extends Component {
     constructor(props){
         super(props);
         this.state = {

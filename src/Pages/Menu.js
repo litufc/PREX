@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Button } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 
 import AppStyles from '../global';
@@ -27,7 +27,7 @@ export default class Menu extends Component {
                     {this.state.userType === 0 &&
                         <CardLarge 
                             icon="calendar" 
-                            onPress={() => this.props.navigation.navigate('Agendamentos')}
+                            onPress={() => this.props.navigation.navigate('Schedules')}
                         >
                             Agendamentos
                         </CardLarge>
