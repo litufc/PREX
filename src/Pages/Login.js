@@ -44,7 +44,7 @@ export default class Login extends Component {
                             textFont="Roboto_medium"
                             textSize={16}
                             align="center"
-                            onPress={() => this.props.navigation.navigate('Menu')}
+                            onPress={() => this.props.navigation.navigate('RecoverPassword')}
                         >
                         Clique aqui
                         </TextLabel>

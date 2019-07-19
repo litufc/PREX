@@ -52,9 +52,6 @@ export default class Menu extends Component {
 }
 
 const styles = StyleSheet.create({
-    text: {
-        color: '#000000'
-    },
     container: {
         height: '100%',
         width: '100%',
