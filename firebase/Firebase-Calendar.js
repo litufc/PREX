@@ -110,7 +110,7 @@ export const readSchedules = async (userId) => {
     .then(snapshot => {
 
         snapshot.forEach((schedule) => {
-            schedules.push(schedule)
+            schedules.push(schedule.data())
             result = schedules
         })
 

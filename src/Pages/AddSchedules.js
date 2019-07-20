@@ -26,35 +26,52 @@ export default class AddSchedules extends Component {
         ];
     }
 
-    componentWillMount() {
-
-    }
-
     state = {
         markedDates: {
             
         },
         markedDatesArray: [],
         loading: false,
+        loadingText: '',
         showToast: false
     }
 
+    componentDidMount() {
+        this.loadSchedules()
+    }
+
+    async loadSchedules() {
+        markedDates = this.state.markedDates
+        markedDatesArray = this.state.markedDatesArray
+
+        this.setState({loading: true, loadingText: 'Carregando Calendário...'})
+        const schedules = await readSchedules('123456')
+        if(schedules != undefined) {
+            schedules.forEach((schedule) => {
+                markedDates[schedule.date] = {selected: true, color: AppStyles.colour.secundaryColor, textColor: 'white'}
+                if(markedDatesArray.indexOf(schedule.date) == -1) {
+                    markedDatesArray.push(schedule.date)
+                }
+                this.setState({markedDates: markedDates})
+                this.setState({markedDatesArray: markedDatesArray})
+            })
+        }
+        this.setState({loading: false})
+    }
+
     clickOnDay = (day) => {
-        let markedDates
         markedDates = this.state.markedDates
         markedDatesArray = this.state.markedDatesArray
         
         if(markedDates[day.dateString] == undefined || markedDates[day.dateString].selected == false) {
             markedDates[day.dateString] = {selected: true, color: AppStyles.colour.secundaryColor, textColor: 'white'}
             markedDatesArray.push(day.dateString)
-            this.setState({markedDates: markedDates})
-            this.setState({markedDatesArray: markedDatesArray})
+            this.setState({markedDates: markedDates, markedDatesArray: markedDatesArray})
         } else {
             markedDates[day.dateString] = {selected: false, color: AppStyles.colour.primaryColor, textColor: 'white'}
             index = markedDatesArray.indexOf(day.dateString)
             markedDatesArray.splice(index, 1)
-            this.setState({markedDates: markedDates})
-            this.setState({markedDatesArray: markedDatesArray})
+            this.setState({markedDates: markedDates, markedDatesArray: markedDatesArray})
         }
 
         console.log(this.state.markedDatesArray)
@@ -80,7 +97,7 @@ export default class AddSchedules extends Component {
     }
 
     addDaysToFirebase = async () => {
-        this.setState({loading: true})
+        this.setState({loading: true, loadingText: 'Carregando Calendário...'})
         const schedules = []
 
         this.state.markedDatesArray.forEach((date) => {
@@ -177,7 +194,7 @@ export default class AddSchedules extends Component {
                 <View style={styles.container}>
                     <Spinner style={styles.spinner} color={AppStyles.colour.secundaryColor}/>
                     <Body style={styles.containerTitle}>
-                        <Title style={styles.titleHeader}>Salvando Datas...</Title>
+                        <Title style={styles.titleHeader}>{this.state.loadingText}</Title>
                     </Body>
                 </View>
             )            
