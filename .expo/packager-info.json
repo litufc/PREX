@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 31117,
+  "packagerPort": 19001,
+  "packagerPid": 8356,
   "expoServerNgrokUrl": "https://er-qgt.anonymous.prex.exp.direct",
   "packagerNgrokUrl": "https://packager.er-qgt.anonymous.prex.exp.direct",
-  "ngrokPid": 31141,
+  "ngrokPid": 11412,
   "webpackServerPort": null
 }

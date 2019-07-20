@@ -6,6 +6,7 @@ import Schedules from './Pages/Schedules';
 import Options from './Pages/Options';
 import SchedulesStatus from './Pages/ScheduleStatus';
 import RecoverPassword from './Pages/RecoverPassword';
+import AddSchedules from './Pages/AddSchedules';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
@@ -15,6 +16,7 @@ const Routes = createAppContainer(
         Schedules,
         Options,
         SchedulesStatus,
+        AddSchedules
     })
 );
 
