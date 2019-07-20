@@ -3,9 +3,10 @@ import * as firebase from 'firebase/app'
 import "firebase/firestore";
 
 initFirebase();
+db = firebase.firestore()
 
 export const registerQuestionnaire = (questionnaire) => {
-    firebase.firestore().collection('questionnaires').add(questionnaire)
+    db.collection('questionnaires').add(questionnaire)
     .then(() => {
         console.log('Deu Certo')
     })
@@ -16,7 +17,7 @@ export const registerQuestionnaire = (questionnaire) => {
 }
 
 export const registerQuestion = (question) => {
-    firebase.firestore().collection('questions').add(question)
+    db.collection('questions').add(question)
     .then(() => {
         console.log('Deu Certo')
     })
@@ -27,7 +28,7 @@ export const registerQuestion = (question) => {
 }
 
 export const registerAnswer = (answer) => {
-    firebase.firestore().collection('answers').add(answer)
+    db.collection('answers').add(answer)
     .then(() => {
         console.log('Deu Certo')
     })
@@ -38,7 +39,7 @@ export const registerAnswer = (answer) => {
 }
 
 export const updateQuestionnaire = (questionnaire) => {
-    firebase.firestore().collection('questionnaires').doc(questionnaire.id).set({
+    db.collection('questionnaires').doc(questionnaire.id).set({
         name: questionnaire.name,
         questions: questionnaire.questions,
         answers: questionnaire.answers
@@ -53,7 +54,7 @@ export const updateQuestionnaire = (questionnaire) => {
 }
 
 export const updateQuestion = (question) => {
-    firebase.firestore().collection('questions').doc(question.id).set({
+    db.collection('questions').doc(question.id).set({
         question: question.question,
         options: question.options,
         textOption: question.textOption,
@@ -70,7 +71,7 @@ export const updateQuestion = (question) => {
 }
 
 export const updateAnswer = (answer) => {
-    firebase.firestore().collection('answers').doc(answer.id).set({
+    db.collection('answers').doc(answer.id).set({
         questionId: answer.questionId,
         questionNumber: answer.questionNumber,
         questionnaireId: answer.questionnaireId,
@@ -87,7 +88,7 @@ export const updateAnswer = (answer) => {
 }
 
 export const deleteQuestionnaire = (questionnaireId) => {
-    firebase.firestore().collection('questionnaires').doc(questionnaireId).delete()
+    db.collection('questionnaires').doc(questionnaireId).delete()
     .then(() => {
         console.log('Deu Certo')
     })
@@ -98,7 +99,7 @@ export const deleteQuestionnaire = (questionnaireId) => {
 }
 
 export const deleteQuestion = (questionId) => {
-    firebase.firestore().collection('questions').doc(questionId).delete()
+    db.collection('questions').doc(questionId).delete()
     .then(() => {
         console.log('Deu Certo')
     })
@@ -109,7 +110,7 @@ export const deleteQuestion = (questionId) => {
 }
 
 export const deleteAnswer = (answerId) => {
-    firebase.firestore().collection('answers').doc(answerId).delete()
+    db.collection('answers').doc(answerId).delete()
     .then(() => {
         console.log('Deu Certo')
     })
@@ -120,7 +121,7 @@ export const deleteAnswer = (answerId) => {
 }
 
 export const readQuestionnaire = (questionnaireId) => {
-    firebase.firestore().collection('questionnaires').doc(questionnaireId).get()
+    db.collection('questionnaires').doc(questionnaireId).get()
     .then((questionnaire) => {
         if (questionnaire.exists) {
             return questionnaire
@@ -135,7 +136,7 @@ export const readQuestionnaire = (questionnaireId) => {
 }
 
 export const readQuestion = (questionId) => {
-    firebase.firestore().collection('questions').doc(questionId).get()
+    db.collection('questions').doc(questionId).get()
     .then((question) => {
         if (question.exists) {
             return question
@@ -150,7 +151,7 @@ export const readQuestion = (questionId) => {
 }
 
 export const readAnswer = (answerId) => {
-    firebase.firestore().collection('answers').doc(answerId).get()
+    db.collection('answers').doc(answerId).get()
     .then((answer) => {
         if (answer.exists) {
             return answer
