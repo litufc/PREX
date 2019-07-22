@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Body, Title, Spinner, Toast, Container } from 'native-base';
+import { Spinner } from 'native-base';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { StyleSheet, ScrollView, Alert, View } from 'react-native';
 
 import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
 import ButtonInput from '../Components/Inputs/ButtonInput';
-import { registerSchedules, readSchedules } from '../../firebase/Firebase-Calendar';
+import Title from '../Components/Title';
+import { registerSchedules, readSchedules } from '../../firebase/Firebase';
 
 LocaleConfig.locales['br'] = {
     monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
@@ -52,8 +53,7 @@ export default class AddSchedules extends Component {
                 if(markedDatesArray.indexOf(schedule.date) == -1) {
                     markedDatesArray.push(schedule.date)
                 }
-                this.setState({markedDates: markedDates})
-                this.setState({markedDatesArray: markedDatesArray})
+                this.setState({markedDates: markedDates, markedDatesArray: markedDatesArray})
             })
         }
         this.setState({loading: false})
@@ -162,9 +162,7 @@ export default class AddSchedules extends Component {
                         onPress={() => this.props.navigation.navigate('Schedules')}
                     />
                     <ScrollView style={styles.container}>
-                        <Body style={styles.containerTitle}>
-                            <Title style={styles.titleHeader}>Escolha as Datas Disponíveis</Title>
-                        </Body>
+                        <Title text="Escolha as Datas Disponíveis"/>
                         <Calendar
                             minDate={Date()}
                             //maxDate={'2019-12-23'} //ALTERAR ISSO AQUI
@@ -193,9 +191,7 @@ export default class AddSchedules extends Component {
             return(
                 <View style={styles.container}>
                     <Spinner style={styles.spinner} color={AppStyles.colour.secundaryColor}/>
-                    <Body style={styles.containerTitle}>
-                        <Title style={styles.titleHeader}>{this.state.loadingText}</Title>
-                    </Body>
+                    <Title text={this.state.loadingText}/>
                 </View>
             )            
         }
@@ -203,15 +199,6 @@ export default class AddSchedules extends Component {
 }
 
 const styles = StyleSheet.create({
-    containerTitle: {
-        alignItems: "center",
-        marginBottom: 16 
-    },
-    titleHeader: {
-        fontFamily: 'Roboto_medium',
-        color: 'white',
-        fontSize: 23
-    },
     container: {
         height: '100%',
         width: '100%',

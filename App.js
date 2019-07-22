@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 
 import Routes from './src/routes';
-import { initFirebase } from './firebase/Firebase.config';
 
 export default class App extends React.Component{
     state = {
@@ -18,7 +17,6 @@ export default class App extends React.Component{
         });
 
         this.setState({ fontLoaded: true });
-        initFirebase();
     }
 
     render(){
