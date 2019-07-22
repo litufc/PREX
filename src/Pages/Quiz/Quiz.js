@@ -32,7 +32,10 @@ export default class Quiz extends Component {
                         <CardLarge icon="user-graduate">Bolsista</CardLarge>    
                     }
                     <CardLarge icon="users">Membro da Comunidade</CardLarge>
-                    <CardLarge icon="history">Histórico de Questionários</CardLarge>
+                    <CardLarge 
+                        icon="history" 
+                        onPress={() => this.props.navigation.navigate('QuizHistoric', { userType: user.userType })}
+                    >Histórico de Questionários</CardLarge>
                 </ScrollView>
             </View>
         );

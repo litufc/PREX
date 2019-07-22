@@ -21,7 +21,7 @@ const Toolbar = ({ title, textColor, background, iconColor, onPress }) => {
         leftContainer: {
             flex: 0,
             paddingLeft: 10,
-            width: 36
+            width: 60
         },
         iconBack: {
             color: iconColor
