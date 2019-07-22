@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 
 import AppStyles from '../../global';
 import Toolbar from '../../Components/Toolbar';
@@ -11,7 +11,6 @@ export default class QuizHistoric extends Component {
     }
 
     render(){
-        const user = this.props.navigation.getParam('userType');
         return(
             <View>
                 <Toolbar 
@@ -19,18 +18,20 @@ export default class QuizHistoric extends Component {
                     textColor="#FFFFFF" 
                     background={AppStyles.colour.primaryColor}
                     iconColor={AppStyles.colour.secundaryColor}
-                    onPress={() => this.props.navigation.navigate('Quiz')}
+                    onPress={() => this.props.navigation.navigate('Menu')}
                 />
                 <ScrollView style={styles.container}>
                     <CardHistoric 
                         author="Mateus Pereira dos Santos"
                         date="15/07/2019"
                         office="Bolsista"
+                        onPress={() => this.props.navigation.navigate('QuizHistoricQuestions')}
                     />
                     <CardHistoric 
                         author="Mateus Pereira dos Santos"
                         date="17/06/2019"
                         office="Comunidade"
+                        onPress={() => this.props.navigation.navigate('QuizHistoricQuestions')}
                     />
                 </ScrollView>
             </View>

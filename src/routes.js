@@ -8,6 +8,7 @@ import SchedulesStatus from './Pages/ScheduleStatus';
 import RecoverPassword from './Pages/RecoverPassword';
 import Quiz from './Pages/Quiz/Quiz';
 import QuizHistoric from './Pages/Quiz/QuizHistoric';
+import QuizHistoricQuestions from './Pages/Quiz/QuizHistoricQuestions';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
@@ -19,6 +20,7 @@ const Routes = createAppContainer(
         SchedulesStatus,
         Quiz,
         QuizHistoric,
+        QuizHistoricQuestions,
     })
 );
 
