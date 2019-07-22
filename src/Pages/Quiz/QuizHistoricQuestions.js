@@ -14,10 +14,11 @@ export default class QuizHistoricQuestions extends Component {
         return(
             <View>
                 <Toolbar 
-                    title="Histórico de Questionários" 
+                    title="Mateus Pereira dos Santos" 
                     textColor="#FFFFFF" 
                     background={AppStyles.colour.primaryColor}
                     iconColor={AppStyles.colour.secundaryColor}
+                    iconRight={true}
                     onPress={() => this.props.navigation.navigate('Menu')}
                 />
                 <View style={styles.container}>
