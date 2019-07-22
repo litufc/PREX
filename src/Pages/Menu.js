@@ -27,7 +27,7 @@ export default class Menu extends Component {
                     {this.state.userType === 0 &&
                         <CardLarge 
                             icon="calendar" 
-                            onPress={() => this.props.navigation.navigate('Schedules')}
+                            onPress={() => this.props.navigation.navigate('Schedules', )}
                         >
                             Agendamentos
                         </CardLarge>
@@ -35,7 +35,12 @@ export default class Menu extends Component {
                     {this.state.userType === 1 &&
                         <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
                     }
-                    <CardLarge icon="tasks">Questionários</CardLarge>
+                    <CardLarge
+                        icon="tasks"
+                        onPress={() => this.props.navigation.navigate('Questionnaires', )}
+                    >
+                        Questionários
+                    </CardLarge>
                     <Grid>
                         <Col style={{ marginRight: 8 }}>
                             <CardSmall icon="question">Ajuda</CardSmall>
