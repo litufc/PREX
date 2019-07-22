@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Card, CardItem, Text, Icon, Grid, Col, Row } from 'native-base';
 import AppStyles from '../../global';
 
-const CardHistoric = ( { author, office, date } ) => {
+const CardHistoric = ( { author, office, date, onPress } ) => {
     const styles = StyleSheet.create({
         card: {
             backgroundColor: AppStyles.colour.secundaryColor,
@@ -48,7 +48,7 @@ const CardHistoric = ( { author, office, date } ) => {
     });
     return(
         <Card style={styles.card}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPress}>
                 <CardItem style={styles.cardItem}>
                     <Grid>
                         <Row>
