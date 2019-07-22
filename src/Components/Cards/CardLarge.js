@@ -31,8 +31,8 @@ const CardLarge = ( { icon, children, onPress } ) => {
             <TouchableOpacity onPress={onPress}>
                 <CardItem style={styles.cardItem}>
                     <Grid>
-                        <Col style={{ width: 80 }}>
-                            <Icon type="FontAwesome" name={icon} style={styles.icon}/>
+                        <Col style={{ width: 90 }}>
+                            <Icon type="FontAwesome5" name={icon} style={styles.icon}/>
                         </Col>
                         <Col style={{ justifyContent: 'center' }}>
                             <TextLabel 
