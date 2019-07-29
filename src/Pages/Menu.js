@@ -16,6 +16,7 @@ export default class Menu extends Component {
     }
 
     render(){
+        const userType = this.state;
         return(
             <View>
                 <Toolbar 
@@ -26,14 +27,14 @@ export default class Menu extends Component {
                 <ScrollView style={styles.container}>
                     {this.state.userType === 0 &&
                         <CardLarge 
-                            icon="calendar" 
-                            onPress={() => this.props.navigation.navigate('Schedules', )}
+                            icon="calendar-day" 
+                            onPress={() => this.props.navigation.navigate('Schedules')}
                         >
                             Agendamentos
                         </CardLarge>
                     }
                     {this.state.userType === 1 &&
-                        <CardLarge icon="calendar">Confirmar Agendamento</CardLarge>
+                        <CardLarge icon="calendar-day">Confirmar Agendamento</CardLarge>
                     }
                     <CardLarge
                         icon="tasks"
