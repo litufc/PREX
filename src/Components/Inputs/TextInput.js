@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Item, Input, Label } from 'native-base';
 
-const TextInput = ( { label, textColor, type } ) => {
+const TextInput = ( { label, textColor, type  } ) => {
     const styles = StyleSheet.create({
         item: {
             borderBottomColor: textColor,

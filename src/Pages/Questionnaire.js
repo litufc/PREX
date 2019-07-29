@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Alert } from 'react-native';
-import { Spinner } from 'native-base';
+import { Spinner, Picker } from 'native-base';
 
+import AppStyles from '../global';
 import Toolbar from '../Components/Toolbar';
 import Options from '../Components/Questionnaire/Options';
 import TextInput from '../Components/Inputs/TextInput';
 import TextLabel from '../Components/TextLabel';
 import Title from '../Components/Title';
-import AppStyles from '../global';
+import BackForthButtons from '../Components/Questionnaire/BackForthButtons';
 import { readQuestionnaire } from './../../firebase/Firebase';
 
 export default class Questionnaire extends Component {
@@ -15,7 +16,9 @@ export default class Questionnaire extends Component {
         super(props);
         const userType = this.props.navigation.getParam('user', 0)
         this.state = {
-            userType: userType
+            userType: userType,
+            questionNumber: 1,
+            isAnswered: false
         }
     }
 
@@ -26,12 +29,14 @@ export default class Questionnaire extends Component {
     state = {
         loading: false,
         loadingText: '',
+        questionNumber: 1,
+        isAnswered: false,
+        answers: [],
         questionnaire: {
             name: '',
             questions: [],
             answers: []
-        },
-        questionNumber: 1
+        }
     }
 
     showBackAlert = () => {
@@ -74,10 +79,39 @@ export default class Questionnaire extends Component {
         this.setState({questionnaire: questionnaire, loading: false})
     }
 
+    goBack = () => {
+        this.setState({questionNumber: this.state.questionNumber-1})
+    }
+
+    goForth = () => {
+        this.setState({questionNumber: this.state.questionNumber+1, isAnswered: false})
+    }
+
+    updateTextAnswer = (e) => {
+        const text = e.nativeEvent.text
+        this.setState({textAnswer: text})
+        if(text.length > 0) {
+            this.setState({isAnswered: true})
+        } else {
+            this.setState({isAnswered: false})
+        }
+    } 
+
+    updateOptionAnswer = () => {
+        //RADIO
+        if (this.state.questionnaire.questions[this.state.questionNumber-1].maxAnswers <= 1) {
+            this.setState({isAnswered: true})
+        }
+        //CHECKBOX
+        else {
+            this.setState({isAnswered: true})
+        }
+    }
+
     render(){
         console.log(this.state.questionNumber)
         if(!this.state.loading) {
-            const question = this.state.questionnaire.questions[1]
+            const question = this.state.questionnaire.questions[this.state.questionNumber-1]
             
             return(
                 <View>
@@ -122,19 +156,19 @@ export default class Questionnaire extends Component {
 
                         <View style={styles.spinner}>
                             {question.options.length > 1 &&
-                                <Options options={question.options} maxAnswers={question.maxAnswers} />
+                                <Options options={question.options} maxAnswers={question.maxAnswers} onPress={this.updateOptionAnswer}/>
                             }
                             {question.textOption === true &&
-                                <TextInput type="text" textColor="white" label={question.options[question.options.length-1]} />
+                                <TextInput type="text" textColor="white" label='Escreva aqui' />
                             }
-                            {this.state.number > 1 &&
-                                <TextInput type="text" textColor="white" label={question.options[question.options.length-1]} />
+                            {this.state.questionNumber === 1 &&
+                                <BackForthButtons step="start" onPressBack={this.goBack} onPressForth={this.goForth} disabled={!this.state.isAnswered}/>
                             }
-                            {this.state.number < this.state.questionnaire.questions.length &&
-                                <TextInput type="text" textColor="white" label={question.options[question.options.length-1]} />
+                            {(this.state.questionNumber > 1 && this.state.questionNumber < this.state.questionnaire.questions.length) &&
+                                <BackForthButtons step="mid" onPressBack={this.goBack} onPressForth={this.goForth} disabled={!this.state.isAnswered}/>
                             }
-                            {this.state.number === this.state.questionnaire.questions.length &&
-                                <TextInput type="text" textColor="white" label={question.options[question.options.length-1]} />
+                            {this.state.questionNumber === this.state.questionnaire.questions.length &&
+                                <BackForthButtons step="end" onPressBack={this.goBack} onPressForth={this.goForth} disabled={!this.state.isAnswered}/>
                             }
                         </View>
                     </ScrollView>
