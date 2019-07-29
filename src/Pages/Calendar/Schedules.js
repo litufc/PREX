@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 
-import AppStyles from '../global';
-import Toolbar from '../Components/Toolbar';
-import CardLarge from '../Components/Cards/CardLarge';
+import AppStyles from '../../global';
+import Toolbar from '../../Components/Toolbar';
+import CardLarge from '../../Components/Cards/CardLarge';
 
 export default class Schedules extends Component {
     constructor(props){

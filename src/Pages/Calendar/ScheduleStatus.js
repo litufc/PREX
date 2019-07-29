@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 
-import AppStyles from '../global';
-import Toolbar from '../Components/Toolbar';
-import CardStatus from '../Components/Cards/CardStatus';
+import AppStyles from '../../global';
+import Toolbar from '../../Components/Toolbar';
+import CardStatus from '../../Components/Cards/CardStatus';
 
 export default class SchedulesStatus extends Component {
     constructor(props){

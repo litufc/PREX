@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Spinner } from 'native-base';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { StyleSheet, ScrollView, Alert, View } from 'react-native';
+import moment from 'moment';
 
-import AppStyles from '../global';
-import Toolbar from '../Components/Toolbar';
-import ButtonInput from '../Components/Inputs/ButtonInput';
-import Title from '../Components/Title';
-import { registerSchedules, readSchedules } from '../../firebase/Firebase';
+import AppStyles from '../../global';
+import Toolbar from '../../Components/Toolbar';
+import ButtonInput from '../../Components/Inputs/ButtonInput';
+import Title from '../../Components/Title';
+import { registerSchedules, readSchedules } from '../../../firebase/Firebase';
 
 LocaleConfig.locales['br'] = {
     monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
@@ -49,11 +50,13 @@ export default class AddSchedules extends Component {
         const schedules = await readSchedules('123456')
         if(schedules != undefined) {
             schedules.forEach((schedule) => {
-                markedDates[schedule.date] = {selected: true, color: AppStyles.colour.secundaryColor, textColor: 'white'}
-                if(markedDatesArray.indexOf(schedule.date) == -1) {
-                    markedDatesArray.push(schedule.date)
+                if(moment(schedule.date, "YYYY-MM-DD").diff(moment(new Date(), "YYYY-MM-DD"), 'days') >= 0) {
+                    markedDates[schedule.date] = {selected: true, color: AppStyles.colour.secundaryColor, textColor: 'white'}
+                    if(markedDatesArray.indexOf(schedule.date) == -1) {
+                        markedDatesArray.push(schedule.date)
+                    }
+                    this.setState({markedDates: markedDates, markedDatesArray: markedDatesArray})
                 }
-                this.setState({markedDates: markedDates, markedDatesArray: markedDatesArray})
             })
         }
         this.setState({loading: false})

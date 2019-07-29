@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Header, Body, Title, Left, Icon } from 'native-base';
+import { Header, Body, Title, Left, Icon, Right } from 'native-base';
 
 const Toolbar = ({ title, textColor, background, iconColor, iconRight, onPress }) => {
     const styles = StyleSheet.create({

@@ -187,17 +187,19 @@ export const readAnswer = async (answerId) => {
 // ----------------------------- CALENDÁRIO ----------------------------- //
 
 export const registerSchedules = async (schedules) => {
+    let result
     const batch = db.batch()
 
     await db.collection('users').doc('123456').collection('schedules').get()
     .then(snapshot => {
-
         snapshot.forEach((schedule) => {
+            console.log("AQUIIII 1")
             scheduleRef = db.collection('users').doc(schedule.data().prexId).collection('schedules').doc(schedule.id)
             batch.delete(scheduleRef)
         })
         
         schedules.forEach((schedule) => {
+            console.log(schedule)
             scheduleRef = db.collection('users').doc(schedule.prexId).collection('schedules').doc(schedule.id)
             batch.set(scheduleRef, {
                 date: schedule.date,
@@ -214,13 +216,15 @@ export const registerSchedules = async (schedules) => {
             return true
         })
         .catch((error) => {
-            console.log(error)
+            console.log("ERROR -> " + error)
             return error
         })
     })
     .catch(err => {
       console.log('Error getting documents', err);
     });
+
+    return result
 }
 
 export const updateSchedule = async (userId, schedule) => {
