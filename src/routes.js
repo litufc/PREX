@@ -7,8 +7,10 @@ import Options from './Pages/Options';
 import SchedulesStatus from './Pages/Calendar/ScheduleStatus';
 import RecoverPassword from './Pages/RecoverPassword';
 import AddSchedules from './Pages/Calendar/AddSchedules';
-import Questionnaires from './Pages/Questionnaires';
-import Questionnaire from './Pages/Questionnaire';
+import Questionnaires from './Pages/Questionnaire/Questionnaires';
+import Questionnaire from './Pages/Questionnaire/Questionnaire';
+import QuestionnaireHistory from './Pages/Questionnaire/QuestionnaireHistory';
+import QuestionnaireHistoryQuestions from './Pages/Questionnaire/QuestionnaireHistoryQuestions';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
@@ -20,7 +22,9 @@ const Routes = createAppContainer(
         SchedulesStatus,
         AddSchedules,
         Questionnaires,
-        Questionnaire
+        Questionnaire,
+        QuestionnaireHistory,
+        QuestionnaireHistoryQuestions
     })
 );
 

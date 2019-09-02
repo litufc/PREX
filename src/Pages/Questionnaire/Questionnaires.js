@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 
-import AppStyles from '../global';
-import Toolbar from '../Components/Toolbar';
-import CardLarge from '../Components/Cards/CardLarge';
+import AppStyles from '../../global';
+import Toolbar from '../../Components/Toolbar';
+import CardLarge from '../../Components/Cards/CardLarge';
 
 export default class Questionnaires extends Component {
     constructor(props){
@@ -54,7 +54,12 @@ export default class Questionnaires extends Component {
                     >
                         Membro da Comunidade
                     </CardLarge>
-                    <CardLarge icon="history">Histórico de Questionários</CardLarge>
+                    <CardLarge
+                        icon="history"
+                        onPress={() => this.props.navigation.navigate('QuestionnaireHistory', {user: 3})}
+                    >
+                        Histórico de Questionários
+                    </CardLarge>
                 </ScrollView>
             </View>
         );

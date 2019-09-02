@@ -5,7 +5,7 @@ import AppStyles from '../../global';
 import Toolbar from '../../Components/Toolbar';
 import CardHistoric from '../../Components/Cards/CardHistoric';
 
-export default class QuizHistoric extends Component {
+export default class QuestionnaireHistory extends Component {
     constructor(props){
         super(props);
     }
@@ -25,13 +25,13 @@ export default class QuizHistoric extends Component {
                         author="Mateus Pereira dos Santos"
                         date="15/07/2019"
                         office="Bolsista"
-                        onPress={() => this.props.navigation.navigate('QuizHistoricQuestions')}
+                        onPress={() => this.props.navigation.navigate('QuestionnaireHistoryQuestions')}
                     />
                     <CardHistoric 
                         author="Mateus Pereira dos Santos"
                         date="17/06/2019"
                         office="Comunidade"
-                        onPress={() => this.props.navigation.navigate('QuizHistoricQuestions')}
+                        onPress={() => this.props.navigation.navigate('QuestionnaireHistoryQuestions')}
                     />
                 </ScrollView>
             </View>
